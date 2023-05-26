@@ -5,15 +5,15 @@ var arrNhanVien = [];
 getStorage();
 
 // và render lên giao diện
-renderGiaoDien();
+renderGiaoDien(arrNhanVien);
 
 // hàm render giao dien
-function renderGiaoDien() {
+function renderGiaoDien(arr) {
   var content = "";
-  for (var i = 0; i < arrNhanVien.length; i++) {
+  for (var i = 0; i < arr.length; i++) {
     var nhanVien = new NhanVien();
     console.log(nhanVien);
-    var nhanVienItem = arrNhanVien[i];
+    var nhanVienItem = arr[i];
     console.log(nhanVienItem);
     Object.assign(nhanVien, nhanVienItem);
 
@@ -56,7 +56,7 @@ document.getElementById("btnThemNV").onclick = function () {
     arrNhanVien.push(nhanVien);
     // console.log(arrNhanVien);
 
-    renderGiaoDien();
+    renderGiaoDien(arrNhanVien);
     saveStorage(arrNhanVien);
     ganGiaTriChoInput(
         "",
@@ -78,7 +78,7 @@ function xoaNhanVien(taiKhoan){
     if(index != -1){
         arrNhanVien.splice(index, 1)
     }
-    renderGiaoDien();
+    renderGiaoDien(arrNhanVien);
 }
 
 //hàm edit nhân viên
@@ -105,7 +105,7 @@ function capNhatThongTinNhanVien(){
     var index = timViTriNhanVien(nhanVienDaChinhSua.taiKhoan);
     arrNhanVien[index] = nhanVienDaChinhSua;
     saveStorage(arrNhanVien);
-    renderGiaoDien();
+    renderGiaoDien(arrNhanVien);
     alert('Cập nhật thành công')
     
 }
@@ -125,3 +125,20 @@ showPassword.addEventListener("click", function(){
         showPassword.innerHTML = '<i class="fa fa-eye"></i>';
     }
 });
+
+// hàm tìm sinh viên
+document.getElementById('btnTimNV').onclick = function(){
+    // lấy dữ liệu người dùng nhập 
+    var nguoiDungSearch = document.getElementById('searchName').value;
+    var arrSearch = [];
+    for (var i = 0; i < arrNhanVien.length; i++){
+        var xepLoaiNguoiDungNhap = arrNhanVien[i]
+        console.log(xepLoaiNguoiDungNhap);
+        if(xepLoaiNguoiDungNhap.xepLoaiNhanVien() == nguoiDungSearch){
+            arrSearch.push(arrNhanVien[i])
+        }else if(nguoiDungSearch == '') {
+            arrSearch.push(arrNhanVien[i]);
+        }
+    }
+    renderGiaoDien(arrSearch);
+}

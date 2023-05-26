@@ -31,6 +31,11 @@ function layGiaTriInput() {
   if (!valid) {
     return;
   }
+  //hàm chỉ nhập input luomh
+  valid &= kiemTraNhapLuong(_luongCB, "tbLuongCB")
+  if(!valid){
+    return;
+  }
 
   valid &= onlyNumber(_gioLam, "tbGiolam")
   if (!valid) {
@@ -54,6 +59,20 @@ function layGiaTriInput() {
   if (!valid) {
     return;
   }
+
+
+  //hàm chỉ nhập input ngayLam
+  valid &= kiemTraNhapNgayLam(_ngayLam, "tbNgay")
+  if (!valid) {
+    return;
+  }
+
+ //hàm kiểm tra người dùng nhập gioLam
+  valid &= kiemTraNhapGioLam(_gioLam, "tbGiolam")
+  if (!valid) {
+    return;
+  }
+
 
 
   var nhanVien = new NhanVien(
@@ -112,6 +131,14 @@ function saveStorage() {
 function getStorage() {
   var arrNhanVienLocal = JSON.parse(localStorage.getItem("arrNhanVien"));
   if (arrNhanVienLocal != null) {
-    arrNhanVien = arrNhanVienLocal;
+    // arrNhanVien = arrNhanVienLocal;
+    for (var i = 0; i < arrNhanVienLocal.length; i++) {
+      var nhanVien = new NhanVien();
+      console.log(nhanVien);
+      var nhanVienItem = arrNhanVienLocal[i];
+      console.log(nhanVienItem);
+      Object.assign(nhanVien, nhanVienItem);
+      arrNhanVien.push(nhanVien)
+    }
   }
 }

@@ -3,7 +3,7 @@ function kiemTraRong(checkInput, idThongBao) {
   //check xem input đó có đc nhập dữ liệu vô hay không
   //nếu không có thì báo lỗi thì trả về 1 kết quả false, nếu có thì trả về true
   if (checkInput) {
-    document.getElementById(idThongBao).display = "none";
+    document.getElementById(idThongBao).style.display = "none";
     return true;
   } else {
     document.getElementById(idThongBao).style.display = "inline";
@@ -21,7 +21,7 @@ function kiemTraEmail(checkInput, idThongBao) {
   //khi sử dụng .test sẽ trả về giá trị true hoặc false
   var hopLe = regexEmail.test(checkInput);
   if (hopLe) {
-    document.getElementById(idThongBao).display = "none";
+    document.getElementById(idThongBao).style.display = "none";
     return true;
   } else {
     document.getElementById(idThongBao).style.display = "inline";
@@ -39,7 +39,7 @@ function onlyNumber(checkInput, idThongBao) {
 //   numberRegex.test("Hey12122022x"); // Returns false
   var hopLe = numberRegex.test(checkInput);
   if(hopLe){
-    document.getElementById(idThongBao).display = "none";
+    document.getElementById(idThongBao).style.display = "none";
     return true;
   }else {
     document.getElementById(idThongBao).style.display = "inline";
@@ -55,7 +55,7 @@ function kiemTraTaiKhoan(checkInput, idThongBao){
   /^[a-zA-Z]{4,6}$/;
   var hopLe = regexString.test(checkInput);
   if(hopLe) {
-    document.getElementById(idThongBao).display = "none";
+    document.getElementById(idThongBao).style.display = "none";
     return true;
   }else {
     document.getElementById(idThongBao).style.display = "inline";
@@ -72,7 +72,7 @@ function kiemTraHoTen(checkInput, idThongBao){
   /^[A-Za-z]+$/;
   var hopLe = regexString.test(checkInput);
   if(hopLe) {
-    document.getElementById(idThongBao).display = "none";
+    document.getElementById(idThongBao).style.display = "none";
     return true;
   }else {
     document.getElementById(idThongBao).style.display = "inline";
@@ -97,5 +97,54 @@ function kiemTraMatKhau(checkInput, idThongBao){
   }
 }
 
+//hàm kiểm tra người dùng nhập lương cơ bản
+function kiemTraNhapLuong(checkInput, idThongBao){
+  var regexSalary = 
+  /^(1[0-9]{6}|20000000)$/;
+  var hopLe = regexSalary.test(checkInput);
+  if(hopLe){
+    document.getElementById(idThongBao).style.display = "none";
+    return true;
+  }else{
+    document.getElementById(idThongBao).style.display = "inline";
+    document.getElementById(idThongBao).innerHTML = "vui lòng nhập đúng"
+    return false;
+  }
+
+}
+
+
+//hàm kiểm tra người dùng nhập ngayLam đúng định dạng
+function kiemTraNhapNgayLam(checkInput, idThongBao){
+  var regexDate = 
+  /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/\d{4}$/;
+  var hopLe = regexDate.test(checkInput);
+  if(hopLe){
+    document.getElementById(idThongBao).style.display = "none";
+    return true;
+  }else{
+    document.getElementById(idThongBao).style.display = "inline";
+    document.getElementById(idThongBao).innerHTML = "vui lòng nhập đúng định dạng"
+    return false;
+  }
+
+}
+
+
+//hàm kiểm tra người dùng nhập gioLam
+function kiemTraNhapGioLam(checkInput, idThongBao){
+  var regexWorkTime = 
+  /^(8[0-9]|9[0-9]|1[0-9]{2}|200)$/;
+  var hopLe = regexWorkTime.test(checkInput);
+  if(hopLe){
+    document.getElementById(idThongBao).style.display = "none";
+    return true;
+  }else{
+    document.getElementById(idThongBao).style.display = "inline";
+    document.getElementById(idThongBao).innerHTML = "vui lòng nhập đúng"
+    return false;
+  }
+
+}
 
 
