@@ -100,7 +100,7 @@ function kiemTraMatKhau(checkInput, idThongBao){
 //hàm kiểm tra người dùng nhập lương cơ bản
 function kiemTraNhapLuong(checkInput, idThongBao){
   var regexSalary = 
-  /^(1[0-9]{6}|20000000)$/;
+  /^(1\d{6}|20000000)$/;
   var hopLe = regexSalary.test(checkInput);
   if(hopLe){
     document.getElementById(idThongBao).style.display = "none";

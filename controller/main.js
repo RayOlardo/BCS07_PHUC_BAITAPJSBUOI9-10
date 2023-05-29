@@ -107,7 +107,32 @@ function capNhatThongTinNhanVien(){
     saveStorage(arrNhanVien);
     renderGiaoDien(arrNhanVien);
     alert('Cập nhật thành công')
+    ganGiaTriChoInput(
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+    )
     
+}
+//hàm đóng bảng log in 
+function dongBangLogIn(){
+    ganGiaTriChoInput(
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+    )
+    document.getElementById('tknv').readOnly = false;
+
 }
 document.getElementById('btnCapNhat').onclick = capNhatThongTinNhanVien;
 
